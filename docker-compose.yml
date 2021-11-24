@@ -4,8 +4,6 @@ services:
     container_name: homeassistant
     image: homeassistant/raspberrypi4-homeassistant:latest
     network_mode: "host"
-    ports:
-      - "8123:8123"
     volumes:
       - /opt/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
