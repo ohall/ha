@@ -1,19 +1,18 @@
-version: '3.7'
+---
+version: "2.1"
 services:
   homeassistant:
+    image: lscr.io/linuxserver/homeassistant
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:latest
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    # volumes:
+      # - /path/to/data:/config
     ports:
-      - "8123:8123"
-    volumes:
-      - /opt/homeassistant:/config
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - 8123:8123 #optional
     # devices:
-    #   - /dev/ttyACM0:/dev/ttyACM0:rwm
-    restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:8123"]
-      interval: 30s
-      timeout: 10s
-      retries: 6
+      # - /path/to/device:/path/to/device
+    restart: unless-stopped
