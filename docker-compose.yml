@@ -13,6 +13,7 @@ services:
       # - /path/to/data:/config
     ports:
       - 8123:8123 #optional
-    # devices:
-      # - /path/to/device:/path/to/device
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
     restart: unless-stopped
