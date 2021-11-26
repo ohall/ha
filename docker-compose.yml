@@ -31,11 +31,12 @@ services:
     devices:
       - /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51501255-if01-port0:/dev/zwave
     volumes:
+      - /srv/config/zwavejs2mqtt:/usr/src/app/store
       - zwave-config:/usr/src/app/store
     ports:
-      - '8091:8091' # port for web interface
-      - '3000:3000' # port for Z-Wave JS websocket server
-networks:
+      - '8091:8091/tcp' # port for web interface
+      - '3000:3000/tcp' # port for Z-Wave JS websocket server
+      networks:
   zwave:
 volumes:
   zwave-config:
