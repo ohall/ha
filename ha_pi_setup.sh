@@ -22,3 +22,13 @@ sudo cp home-assistant.service /etc/systemd/system/home-assistant.service
 systemctl enable home-assistant.service
 systemctl enable docker
 
+## ZWave server
+# nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+nvm install 16
+npm init
+npm i @zwave-js/server
+npm i -g ts-node
+npm i --save-dev @types/ws @types/triple-beam @types/minimist
+
+./node_modules/.bin/ts-node node_modules/@zwave-js/server/src/bin/server.ts /dev/tty0

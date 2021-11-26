@@ -17,3 +17,26 @@ services:
       - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/ttyUSB1:/dev/ttyUSB1
     restart: unless-stopped
+
+  zwavejs2mqtt:
+    container_name: zwavejs2mqtt
+    image: zwavejs/zwavejs2mqtt:latest
+    restart: always
+    tty: true
+    stop_signal: SIGINT
+    environment:
+      - TZ=America/New_York
+    networks:
+      - zwave
+    devices:
+      - /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51501255-if01-port0:/dev/zwave
+    volumes:
+      - zwave-config:/usr/src/app/store
+    ports:
+      - '8091:8091' # port for web interface
+      - '3000:3000' # port for Z-Wave JS websocket server
+networks:
+  zwave:
+volumes:
+  zwave-config:
+    name: zwave-config
