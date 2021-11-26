@@ -29,7 +29,7 @@ services:
     networks:
       - zwave
     devices:
-      - /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51501255-if00-port0:/dev/zwave
+      - /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51501255-if01-port0:/dev/zwave
     volumes:
       - /srv/config/zwavejs2mqtt:/usr/src/app/store
     ports:
