@@ -22,7 +22,7 @@ services:
     environment:
       - TZ=America/New_York
     devices:
-      - /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51501255-if01-port0:/dev/zwave
+      - /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51501255-if00-port0:/dev/zwave
     volumes:
       - zwave-config:/usr/src/app/store
     ports:
