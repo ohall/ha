@@ -7,8 +7,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/New_York
-    # volumes:
-      # - /path/to/data:/config
+    volumes:
+      - /home/pi/hass-configs:/config
     ports:
       - 8123:8123 #optional
     devices:
