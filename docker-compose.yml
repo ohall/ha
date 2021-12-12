@@ -28,6 +28,19 @@ services:
     ports:
       - '8091:8091/tcp' # port for web interface
       - '3000:3000/tcp' # port for Z-Wave JS websocket server
+  duckdns:
+    image: lscr.io/linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=America/New_York
+      - SUBDOMAINS=snerple
+      - TOKEN=7ec1d1b5-0c8f-41da-8e48-5486784d2be9
+      - LOG_FILE=false #optional
+    volumes:
+      - ./duck-config:/config #optional
+    restart: unless-stopped
 volumes:
   zwave-config:
     name: zwave-config
